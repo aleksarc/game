@@ -1,4 +1,4 @@
-//Questions
+//Questions array for the trivia game
 const questions = [
     {
         question: 'What is the capital of France?',
@@ -17,26 +17,36 @@ const questions = [
     },
 ];
 
+/*Declare currentQuestionIndex variable that will help to start the game from index 0 in the questions array
+**and be used for comparison and incrememt to move to next question
+*/
 let currentQuestionIndex = 0;
 
+/**
+ * Listerners for all buttons on the page
+ */
+document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.getElementsByTagName("button");
 
-//Add event listeners
-// document.addEventListener("DOMContentLoaded", function () {
-//     let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.addEventListener(
+            "click", function () {
+                if (this.getAttribute("data-type") === "start-guest") {
+                    displayQuestion(currentQuestionIndex);
+                    hideElement('start-menu');
+                    unhideElement('game-container');
+                } else if (this.getAttribute("data-type") === "start-user") {
+                    alert("Create user function");
+                } else if (this.getAttribute("data-type") === "feedbackButton") {
+                    unhideElement("feedback-view");
+                } else {
+                    alert("Nothing else");
+                }
+            }
+        );
 
-//     for (let button of buttons) {
-//         button.addEventListener(
-//             "click", function () {
-//                 if (this.getAttribute("data-type") === "submit") {
-//                     alert("You clicked submit");
-//                 } else {
-//                     alert("Something else");
-//                 }
-//             }
-//         );
-
-//     }
-// })
+    }
+})
 
 
 function runGameAsGuest() {
@@ -47,11 +57,15 @@ function runGameAsUser() {
 
 }
 
+/**
+ * Creates the question element and replaces its content by a question from the questions array
+ * Sets button's .onclick event calls the checkAnswer() function
+ * @param {int} index 
+ */
 function displayQuestion(index) {
     let currentQuestion = questions[index];
     let questionElement = document.getElementById('questionText');
     let optionsElement = document.getElementById('answerOptions');
-    let resultElement = document.getElementById('result');
 
     questionElement.textContent = currentQuestion.question;
 
@@ -69,6 +83,12 @@ function displayQuestion(index) {
     });
 }
 
+/**
+ * Validates selected answer comparing with correct answer stored in the questions array
+ * Increments the currentQuestionIndex to move to next question
+ * Displays all questions from the array or a "Trivia game finished" message if there are no more questions
+ * @param {int} button 
+ */
 function checkAnswer(button) {
     let selectedOptionIndex = button.getAttribute('data-index');
     let currentQuestion = questions[currentQuestionIndex];
@@ -77,12 +97,10 @@ function checkAnswer(button) {
     let optionsElement = document.getElementById('answerOptions');
 
     if (currentQuestion.options[selectedOptionIndex] === currentQuestion.correctAnswer) {
-        resultElement.classList.toggle("show");
         resultElement.textContent = "Correct!";
         incrementCorrectScore();
     } else {
-        //resultElement.textContent = 'Incorrect.';
-        resultElement.classList.toggle("show");
+        resultElement.textContent = 'Incorrect.';
         incrementIncorrectScore();
     }
 
@@ -97,18 +115,32 @@ function checkAnswer(button) {
     }
 }
 
+/**
+ * Increments the correct score by 1
+ */
 function incrementCorrectScore() {
     let oldScore = parseInt(document.getElementById('correct').innerText);
     document.getElementById('correct').innerText = ++oldScore;
 }
 
+/**
+ * Increments the incorrect score by 1
+ */
 function incrementIncorrectScore() {
     let oldScore = parseInt(document.getElementById('incorrect').innerText);
     document.getElementById('incorrect').innerText = ++oldScore;
 }
 
-function feedbackArea() {
-
+/**
+ * Hide elements by Id
+ */
+function hideElement(id) {
+    document.getElementById(id).style.display = "none";
 }
 
-displayQuestion(currentQuestionIndex);
+/**
+ * Unhide elements by Id
+ */
+function unhideElement(id) {
+    document.getElementById(id).style.display = "block";
+}

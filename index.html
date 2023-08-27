@@ -16,25 +16,29 @@
     <div class="container">
         <div class="header">
             <h1>Quiz Game</h1>
-            <button id="startButton" class="button" data-type="start-guest">Start game as a guest</button>
-            <button id="createUser" class="button" data-type="start-user">Create a username</button>
-        </div>
-        <div class="game">
-            <div class="question">
-                <p id="questionText"></p>
-            </div>
-            <div class="answer-options" id="answerOptions"></div>
-            <div class="result">
-                <span id="result"></span>
+            <div id="start-menu">
+                <button id="startButton" class="button" data-type="start-guest">Start game as a guest</button>
+                <button id="createUser" class="button" data-type="start-user">Create a username</button>
             </div>
         </div>
-        <div class="scoreboard">
-            <p class="scores">Correct Answers <span id="correct">0</span></p>
-            <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
+        <div id="game-container" style="display: none;">
+            <div class="game">
+                <div class="question">
+                    <p id="questionText"></p>
+                </div>
+                <div class="answer-options" id="answerOptions"></div>
+                <div class="result">
+                    <span id="result"></span>
+                </div>
+            </div>
+            <div class="scoreboard">
+                <p class="scores">Correct Answers <span id="correct">0</span></p>
+                <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
+            </div>
         </div>
         <div class="feedback-form">
-            <h2>Feedback</h2>
-            <div class="feedback-view">
+            <button class="button" data-type="feedbackButton">Feedback</button>
+            <div id="feedback-view" style="display: none;">
                 <textarea id="feedbackTextarea" placeholder="Provide your feedback here"></textarea>
                 <button class="button" id="submitFeedbackButton">Submit Feedback</button>
             </div>

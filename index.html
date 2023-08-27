@@ -16,14 +16,17 @@
     <div class="container">
         <div class="header">
             <h1>Quiz Game</h1>
-            <button id="startButton">Start game as a guest</button>
-            <button id="createUser">Create a username</button>
+            <button id="startButton" class="button" data-type="start-guest">Start game as a guest</button>
+            <button id="createUser" class="button" data-type="start-user">Create a username</button>
         </div>
         <div class="game">
             <div class="question">
                 <p id="questionText"></p>
             </div>
             <div class="answer-options" id="answerOptions"></div>
+            <div class="result">
+                <span id="result"></span>
+            </div>
         </div>
         <div class="scoreboard">
             <p class="scores">Correct Answers <span id="correct">0</span></p>
@@ -31,8 +34,10 @@
         </div>
         <div class="feedback-form">
             <h2>Feedback</h2>
-            <textarea id="feedbackTextarea" placeholder="Provide your feedback here"></textarea>
-            <button id="submitFeedbackButton">Submit Feedback</button>
+            <div class="feedback-view">
+                <textarea id="feedbackTextarea" placeholder="Provide your feedback here"></textarea>
+                <button class="button" id="submitFeedbackButton">Submit Feedback</button>
+            </div>
         </div>
         <script src="./assets/js/script.js"></script>
 </body>

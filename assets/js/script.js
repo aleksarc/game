@@ -29,23 +29,47 @@ document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
 
     for (let button of buttons) {
-        button.addEventListener(
-            "click", function () {
-                if (this.getAttribute("data-type") === "start-guest") {
+        button.addEventListener("click", function () {
+            if (this.getAttribute("data-type") === "start-guest") {
+                displayQuestion(currentQuestionIndex);
+                hideElement('start-menu');
+                unhideElement('game-container');
+            } else if (this.getAttribute("data-type") === "start-user") {
+                alert("Create user function");
+            } else if (this.getAttribute("data-type") === "feedbackButton") {
+                unhideElement("feedback-view");
+            } else if (this.getAttribute("data-type") === "close-popup") {
+                hideElement('popup');
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
                     displayQuestion(currentQuestionIndex);
-                    hideElement('start-menu');
-                    unhideElement('game-container');
-                } else if (this.getAttribute("data-type") === "start-user") {
-                    alert("Create user function");
-                } else if (this.getAttribute("data-type") === "feedbackButton") {
-                    unhideElement("feedback-view");
                 } else {
-                    alert("Nothing else");
+                    hideElement('game-container');
+                    questionElement.textContent = 'Trivia game finished!';
+                    optionsElement.innerHTML = '';
+                    resultElement.textContent = '';
                 }
+            } else {
+                alert('Something went wrong!');
             }
+        }
         );
 
     }
+
+    // Add event listener for the close button of the popup
+    // document.getElementById('closePopup').addEventListener('click', function () {
+    //     hideElement('popup');
+    //     currentQuestionIndex++;
+    //     if (currentQuestionIndex < questions.length) {
+    //         displayQuestion(currentQuestionIndex);
+    //     } else {
+    //         hideElement('game-container');
+    //         questionElement.textContent = 'Trivia game finished!';
+    //         optionsElement.innerHTML = '';
+    //         resultElement.textContent = '';
+    //     }
+    // });
 })
 
 
@@ -97,24 +121,28 @@ function checkAnswer(button) {
     let optionsElement = document.getElementById('answerOptions');
 
     if (currentQuestion.options[selectedOptionIndex] === currentQuestion.correctAnswer) {
-        resultElement.textContent = "Correct!";
-        unhideElement('result');
+        // resultElement.textContent = "Correct!";
+        // unhideElement('result');
+        document.getElementById('popupMessage').textContent = "Correct!";
+        unhideElement('popup');
         incrementCorrectScore();
     } else {
-        resultElement.textContent = 'Incorrect.';
-        unhideElement('result');
+        // resultElement.textContent = 'Incorrect.';
+        // unhideElement('result');
+        document.getElementById('popupMessage').textContent = 'Incorrect.';
+        unhideElement('popup');
         incrementIncorrectScore();
     }
 
-    currentQuestionIndex++;
+    // currentQuestionIndex++;
 
-    if (currentQuestionIndex < questions.length) {
-        displayQuestion(currentQuestionIndex);
-    } else {
-        questionElement.textContent = 'Trivia game finished!';
-        optionsElement.innerHTML = '';
-        resultElement.textContent = '';
-    }
+    // if (currentQuestionIndex < questions.length) {
+    //     displayQuestion(currentQuestionIndex);
+    // } else {
+    //     questionElement.textContent = 'Trivia game finished!';
+    //     optionsElement.innerHTML = '';
+    //     resultElement.textContent = '';
+    // }
 }
 
 /**

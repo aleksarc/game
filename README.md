@@ -37,3 +37,8 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 ---
 
 Happy coding!
+
+
+## References
+Favicon https://www.pngwing.com/en/free-png-zoqmo
+Popup https://www.w3schools.com/howto/howto_js_popup.asp

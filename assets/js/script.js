@@ -98,9 +98,11 @@ function checkAnswer(button) {
 
     if (currentQuestion.options[selectedOptionIndex] === currentQuestion.correctAnswer) {
         resultElement.textContent = "Correct!";
+        unhideElement('result');
         incrementCorrectScore();
     } else {
         resultElement.textContent = 'Incorrect.';
+        unhideElement('result');
         incrementIncorrectScore();
     }
 

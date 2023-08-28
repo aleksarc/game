@@ -57,6 +57,11 @@ textarea {
     font-size: large;
 }
 
+/* button for new game */
+.new-game {
+    float: right;
+}
+
 /* section with questions and answer options */
 .game {
     background-color: #ffffff;

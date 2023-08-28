@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 hideElement('start-menu');
                 hideElement('popup');
                 unhideElement('game-container');
-                console.log('at start-guest: ' + currentQuestionIndex);
             } else if (this.getAttribute("data-type") === "start-user") {
                 alert("Create user function");
             } else if (this.getAttribute("data-type") === "feedbackButton") {
@@ -55,7 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     questionElement.textContent = 'Trivia game finished!';
                     finalResult.textContent = result;
                     unhideElement('final-result');
+                    unhideElement('new-game');
                 }
+            } else if (this.getAttribute("data-type") === 'new-game') {
+                currentQuestionIndex = 0;
+                hideElement('new-game');
+                hideElement('final-result');
+                document.getElementById('answerOptions').style.display = 'flex';
+                document.getElementById('correct').textContent = 0;
+                document.getElementById('incorrect').textContent = 0;
+                displayQuestion(currentQuestionIndex);
             } else {
                 alert('Something went wrong!');
             }

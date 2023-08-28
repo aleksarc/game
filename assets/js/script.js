@@ -27,18 +27,25 @@ let currentQuestionIndex = 0;
  */
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
+    console.log(buttons);
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
             if (this.getAttribute("data-type") === "start-guest") {
                 displayQuestion(currentQuestionIndex);
                 hideElement('start-menu');
+                hideElement('popup');
                 unhideElement('game-container');
+                console.log(buttons);
             } else if (this.getAttribute("data-type") === "start-user") {
                 alert("Create user function");
             } else if (this.getAttribute("data-type") === "feedbackButton") {
                 unhideElement("feedback-view");
-            } else if (this.getAttribute("data-type") === "close-popup") {
+            }
+            //else if (this.getAttribute("data-type") === "response") {
+            //     checkAnswer(this);
+            // } 
+            else if (this.getAttribute("data-type") === "close-popup") {
                 hideElement('popup');
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
@@ -98,9 +105,11 @@ function displayQuestion(index) {
     currentQuestion.options.forEach((option, idx) => {
         let button = document.createElement('button');
         button.textContent = option;
-        button.className = 'option';
+        button.className = 'button';
         button.setAttribute('data-index', idx);
+        button.setAttribute('data-type', 'response');
         button.onclick = function () {
+            hideElement('popup');
             checkAnswer(this);
         };
         optionsElement.appendChild(button);

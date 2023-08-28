@@ -114,7 +114,6 @@ textarea {
 }
 
 /* popup to show response correct or incorrect */
-
 .popup {
     position: fixed;
     top: 28%;
@@ -130,11 +129,23 @@ textarea {
 }
 
 .popup-message {
-    margin: 0;
+    font-family: 'Black Ops One', cursive;
+    text-align: center;
 }
 
 .popup-close {
-    margin-top: 10px;
+    float: right;
+    border: transparent;
+    background-color: transparent;
+    color: blue;
+}
+
+.popup img {
+    width: -webkit-fill-available;
+    height: 100px;
+    object-fit: contain;
+    padding: 30px;
+    align-items: center;
 }
 
 /* Feedback form */
@@ -166,5 +177,11 @@ textarea {
 @media (max-width: 600px) {
     .container {
         padding: 10px;
+    }
+
+    /* final result text */
+    #final-result {
+        font-family: 'Black Ops One', cursive;
+        font-size: 2rem;
     }
 }

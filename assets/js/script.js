@@ -103,11 +103,13 @@ function checkAnswer(button) {
     let currentQuestion = questions[currentQuestionIndex];
 
     if (currentQuestion.options[selectedOptionIndex] === currentQuestion.correctAnswer) {
-        document.getElementById('popupMessage').textContent = "Correct!";
+        document.getElementById('popupMessage').textContent = 'Correct!!';
+        document.getElementById('popup-image').src = './assets/images/correct.png';
         unhideElement('popup');
         incrementCorrectScore();
     } else {
-        document.getElementById('popupMessage').textContent = 'Incorrect.';
+        document.getElementById('popupMessage').textContent = 'Incorrect';
+        document.getElementById('popup-image').src = './assets/images/incorrect.png';
         unhideElement('popup');
         incrementIncorrectScore();
     }
@@ -137,9 +139,9 @@ function calculateScore() {
     let correct = parseInt(document.getElementById('correct').textContent);
     let incorrect = parseInt(document.getElementById('incorrect').textContent);
     if (correct > incorrect) {
-        return 'YOU WON!!!';
+        return 'YOU WON!!! :D';
     } else {
-        return 'YOU LOST :(';
+        return 'YOU LOST... :(';
     }
 }
 

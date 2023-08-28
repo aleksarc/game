@@ -17,17 +17,19 @@ const questions = [
     },
 ];
 
-/*Declare currentQuestionIndex variable that will help to start the game from index 0 in the questions array
-**and be used for comparison and incrememt to move to next question
-*/
+/**
+ * Declare currentQuestionIndex variable that will help to start the game from index 0 in the questions array
+ * and be used for comparison and incrememt to move to next question
+ */
 let currentQuestionIndex = 0;
 
 /**
  * Listerners for all buttons on the page
+ * Compare the data-type attribute of the button and call the appropriate function
  */
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
-    console.log(buttons);
+    let questionElement = document.getElementById('questionText');
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
@@ -36,25 +38,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 hideElement('start-menu');
                 hideElement('popup');
                 unhideElement('game-container');
-                console.log(buttons);
+                console.log('at start-guest: ' + currentQuestionIndex);
             } else if (this.getAttribute("data-type") === "start-user") {
                 alert("Create user function");
             } else if (this.getAttribute("data-type") === "feedbackButton") {
                 unhideElement("feedback-view");
-            }
-            //else if (this.getAttribute("data-type") === "response") {
-            //     checkAnswer(this);
-            // } 
-            else if (this.getAttribute("data-type") === "close-popup") {
+            } else if (this.getAttribute("data-type") === "close-popup") {
                 hideElement('popup');
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
                     displayQuestion(currentQuestionIndex);
                 } else {
-                    hideElement('game-container');
+                    let result = calculateScore();
+                    let finalResult = document.getElementById('final-result');
+                    hideElement('answerOptions');
                     questionElement.textContent = 'Trivia game finished!';
-                    optionsElement.innerHTML = '';
-                    resultElement.textContent = '';
+                    finalResult.textContent = result;
+                    unhideElement('final-result');
                 }
             } else {
                 alert('Something went wrong!');
@@ -63,30 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-    // Add event listener for the close button of the popup
-    // document.getElementById('closePopup').addEventListener('click', function () {
-    //     hideElement('popup');
-    //     currentQuestionIndex++;
-    //     if (currentQuestionIndex < questions.length) {
-    //         displayQuestion(currentQuestionIndex);
-    //     } else {
-    //         hideElement('game-container');
-    //         questionElement.textContent = 'Trivia game finished!';
-    //         optionsElement.innerHTML = '';
-    //         resultElement.textContent = '';
-    //     }
-    // });
 })
-
-
-function runGameAsGuest() {
-
-}
-
-function runGameAsUser() {
-
-}
 
 /**
  * Creates the question element and replaces its content by a question from the questions array
@@ -119,39 +96,21 @@ function displayQuestion(index) {
 /**
  * Validates selected answer comparing with correct answer stored in the questions array
  * Increments the currentQuestionIndex to move to next question
- * Displays all questions from the array or a "Trivia game finished" message if there are no more questions
  * @param {int} button 
  */
 function checkAnswer(button) {
     let selectedOptionIndex = button.getAttribute('data-index');
     let currentQuestion = questions[currentQuestionIndex];
-    let resultElement = document.getElementById('result');
-    let questionElement = document.getElementById('questionText');
-    let optionsElement = document.getElementById('answerOptions');
 
     if (currentQuestion.options[selectedOptionIndex] === currentQuestion.correctAnswer) {
-        // resultElement.textContent = "Correct!";
-        // unhideElement('result');
         document.getElementById('popupMessage').textContent = "Correct!";
         unhideElement('popup');
         incrementCorrectScore();
     } else {
-        // resultElement.textContent = 'Incorrect.';
-        // unhideElement('result');
         document.getElementById('popupMessage').textContent = 'Incorrect.';
         unhideElement('popup');
         incrementIncorrectScore();
     }
-
-    // currentQuestionIndex++;
-
-    // if (currentQuestionIndex < questions.length) {
-    //     displayQuestion(currentQuestionIndex);
-    // } else {
-    //     questionElement.textContent = 'Trivia game finished!';
-    //     optionsElement.innerHTML = '';
-    //     resultElement.textContent = '';
-    // }
 }
 
 /**
@@ -168,6 +127,20 @@ function incrementCorrectScore() {
 function incrementIncorrectScore() {
     let oldScore = parseInt(document.getElementById('incorrect').innerText);
     document.getElementById('incorrect').innerText = ++oldScore;
+}
+
+/**
+ * Calculates if the number of correct answers is higher than incorrect and sets the response text
+ * @returns String WON or LOST
+ */
+function calculateScore() {
+    let correct = parseInt(document.getElementById('correct').textContent);
+    let incorrect = parseInt(document.getElementById('incorrect').textContent);
+    if (correct > incorrect) {
+        return 'YOU WON!!!';
+    } else {
+        return 'YOU LOST :(';
+    }
 }
 
 /**

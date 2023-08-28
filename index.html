@@ -27,19 +27,18 @@
                 <div class="question">
                     <p id="questionText"></p>
                 </div>
-                <div class="answer-options" id="answerOptions"></div>
+                <span id="final-result" style="display: none;">Final Result</span>
+                <div class="answer-options" id="answerOptions">
+                </div>
                 <br>
-                <!-- <div class="result">
-                    <span id="result" style="display: none;"></span>
-                </div> -->
                 <div id="popup" class="popup">
                     <p id="popupMessage" class="popup-message"></p>
                     <button id="closePopup" class="popup-close" data-type="close-popup">Close</button>
                 </div>
             </div>
             <div class="scoreboard">
-                <p class="scores">Correct Answers <span id="correct">0</span></p>
-                <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
+                <p class="scores">Correct: <span id="correct">0</span></p>
+                <p class="scores">Incorrect: <span id="incorrect">0</span></p>
             </div>
         </div>
         <div class="feedback-form">

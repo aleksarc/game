@@ -10,6 +10,11 @@ textarea {
     font-family: 'Montserrat', sans-serif;
 }
 
+html {
+    background-image: url('/assets/images/back-image2.png');
+    background-size: auto;
+}
+
 /* Global styles */
 .container {
     max-width: 800px;
@@ -188,5 +193,21 @@ textarea {
     #final-result {
         font-family: 'Black Ops One', cursive;
         font-size: 2rem;
+    }
+
+    /* popup for correct/incorrect answers */
+    .popup-close {
+        float: right;
+        border: transparent;
+        background-color: transparent;
+        color: blue;
+        margin-top: -1rem;
+    }
+
+    .popup img {
+        width: -webkit-fill-available;
+        height: 60px;
+        object-fit: contain;
+        padding: 25px;
     }
 }

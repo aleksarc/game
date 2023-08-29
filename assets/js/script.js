@@ -30,6 +30,7 @@ let currentQuestionIndex = 0;
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
     let questionElement = document.getElementById('questionText');
+    let clickState = 0;
 
     for (let button of buttons) {
         button.addEventListener("click", function () {
@@ -41,7 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (this.getAttribute("data-type") === "start-user") {
                 alert("Create user function");
             } else if (this.getAttribute("data-type") === "feedbackButton") {
-                unhideElement("feedback-view");
+                if (clickState == 0) {
+                    unhideElement("feedback-view");
+                    clickState++;
+                } else {
+                    hideElement("feedback-view");
+                    clickState = 0;
+                }
+
             } else if (this.getAttribute("data-type") === "close-popup") {
                 hideElement('popup');
                 currentQuestionIndex++;

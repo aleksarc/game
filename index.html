@@ -19,8 +19,8 @@
             <h1>Trivia Game</h1>
             <span id="username" style="display: none;">Player: </span>
             <div id="start-menu">
-                <button id="startButton" class="button" data-type="start-guest">Start game as a guest</button>
-                <button id="createUser" class="button" data-type="start-user">Start game with a username</button>
+                <button id="startButton" class="button" data-type="start-guest">Start as guest</button>
+                <button id="createUser" class="button" data-type="start-user">Create username</button>
                 <div id="user" class="user" style="display: none;">
                     <input type="text" id="user-input" name="user-input" autofocus required>
                     <label for="user-input">Type your name: </label>
@@ -52,13 +52,14 @@
             </div>
         </div>
         <div class="feedback-form">
-            <button class="button" id="feedback-button" data-type="feedbackButton">Feedback</button>
+            <button class="button" id="feedback-button" data-type="feedbackButton">feedback</button>
             <div id="feedback-view" style="display: none;">
                 <textarea id="feedbackTextarea" placeholder="Provide your feedback here"></textarea>
                 <button class="button" id="submitFeedbackButton">Submit</button>
             </div>
         </div>
-        <script src="./assets/js/script.js"></script>
+    </div>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

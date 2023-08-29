@@ -178,6 +178,9 @@ function unhideElement(id) {
     document.getElementById(id).style.display = 'block';
 }
 
+/**
+ * Starts game by hiding/unhiding elements and loading the questions from array
+ */
 function runGame() {
     displayQuestion(currentQuestionIndex);
     hideElement('start-menu');

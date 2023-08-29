@@ -17,9 +17,15 @@
     <div class="container">
         <div class="header">
             <h1>Trivia Game</h1>
+            <span id="username" style="display: none;">Player: </span>
             <div id="start-menu">
                 <button id="startButton" class="button" data-type="start-guest">Start game as a guest</button>
-                <button id="createUser" class="button" data-type="start-user">Create a username</button>
+                <button id="createUser" class="button" data-type="start-user">Start game with a username</button>
+                <div id="user" class="user" style="display: none;">
+                    <input type="text" id="user-input" name="user-input" autofocus required>
+                    <label for="user-input">Type your name: </label>
+                    <button id="submit-user" class="button" data-type="submit-user">Start</button>
+                </div>
             </div>
         </div>
         <div id="game-container" style="display: none;">

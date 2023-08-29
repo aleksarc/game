@@ -27,30 +27,33 @@ let currentQuestionIndex = 0;
  * Listerners for all buttons on the page
  * Compare the data-type attribute of the button and call the appropriate function
  */
-document.addEventListener("DOMContentLoaded", function () {
-    let buttons = document.getElementsByTagName("button");
+document.addEventListener('DOMContentLoaded', function () {
+    let buttons = document.getElementsByTagName('button');
     let questionElement = document.getElementById('questionText');
     let clickState = 0;
 
     for (let button of buttons) {
-        button.addEventListener("click", function () {
-            if (this.getAttribute("data-type") === "start-guest") {
-                displayQuestion(currentQuestionIndex);
-                hideElement('start-menu');
-                hideElement('popup');
-                unhideElement('game-container');
-            } else if (this.getAttribute("data-type") === "start-user") {
-                alert("Create user function");
-            } else if (this.getAttribute("data-type") === "feedbackButton") {
+        button.addEventListener('click', function () {
+            if (this.getAttribute('data-type') === 'start-guest') {
+                runGame();
+            } else if (this.getAttribute('data-type') === 'start-user') {
+                unhideElement('user');
+            } else if (this.getAttribute('data-type') === 'submit-user') {
+                hideElement('user');
+                let name = document.getElementById('user-input').value;
+                document.getElementById('username').textContent += name;
+                document.getElementById('username').style.display = 'contents';
+                runGame();
+            } else if (this.getAttribute('data-type') === 'feedbackButton') {
                 if (clickState == 0) {
-                    unhideElement("feedback-view");
+                    unhideElement('feedback-view');
                     clickState++;
                 } else {
-                    hideElement("feedback-view");
+                    hideElement('feedback-view');
                     clickState = 0;
                 }
 
-            } else if (this.getAttribute("data-type") === "close-popup") {
+            } else if (this.getAttribute('data-type') === 'close-popup') {
                 hideElement('popup');
                 currentQuestionIndex++;
                 if (currentQuestionIndex < questions.length) {
@@ -64,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     unhideElement('final-result');
                     unhideElement('new-game');
                 }
-            } else if (this.getAttribute("data-type") === 'new-game') {
+            } else if (this.getAttribute('data-type') === 'new-game') {
                 currentQuestionIndex = 0;
                 hideElement('new-game');
                 hideElement('final-result');
@@ -155,7 +158,7 @@ function calculateScore() {
     let correct = parseInt(document.getElementById('correct').textContent);
     let incorrect = parseInt(document.getElementById('incorrect').textContent);
     if (correct > incorrect) {
-        return 'YOU WON!!! :D';
+        return `IT'S A WIN!!! :D`;
     } else {
         return 'YOU LOST... :(';
     }
@@ -165,12 +168,19 @@ function calculateScore() {
  * Hide elements by Id
  */
 function hideElement(id) {
-    document.getElementById(id).style.display = "none";
+    document.getElementById(id).style.display = 'none';
 }
 
 /**
  * Unhide elements by Id
  */
 function unhideElement(id) {
-    document.getElementById(id).style.display = "block";
+    document.getElementById(id).style.display = 'block';
+}
+
+function runGame() {
+    displayQuestion(currentQuestionIndex);
+    hideElement('start-menu');
+    hideElement('popup');
+    unhideElement('game-container');
 }

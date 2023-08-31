@@ -34,20 +34,32 @@ html {
 
 .header h1 {
     color: #333;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 10px;
     font-family: 'Black Ops One', cursive;
+    text-shadow: 2px 2px #a1a1a0;
 }
 
 .button {
     background-color: #e0e0e0;
     color: #333;
     padding: 10px 20px;
-    border: none;
+    border: outset;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
-    font-weight: 400;
+    font-weight: 700;
+}
+
+.submit-button {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px 20px;
+    border: outset;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 700;
 }
 
 /* buttons holding answer options */
@@ -133,7 +145,7 @@ html {
 /* popup to show response correct or incorrect */
 .popup {
     position: fixed;
-    top: 28%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -177,7 +189,7 @@ html {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     width: -webkit-fill-available;
-    height: 20%;
+    height: 8%;
 }
 
 /* username position */
@@ -185,6 +197,8 @@ html {
     position: fixed;
     margin-left: 19.5rem;
     margin-top: -3.5rem;
+    font-size: x-large;
+    color: #723232;
 }
 
 /* Feedback form */

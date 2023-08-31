@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     hideElement('feedback-view');
                     clickState = 0;
                 }
+            } else if (this.getAttribute('data-type') === 'submit-feedback') {
+                alert('Thank you! Feedback submited.');
+                document.getElementById('feedbackTextarea').value = '';
+                hideElement('feedback-view');
 
             } else if (this.getAttribute('data-type') === 'close-popup') {
                 hideElement('popup');
@@ -66,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     finalResult.textContent = result;
                     unhideElement('final-result');
                     unhideElement('new-game');
-                    hideElement('quit');
                 }
             } else if (this.getAttribute('data-type') === 'new-game') {
                 currentQuestionIndex = 0;

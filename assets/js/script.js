@@ -7,7 +7,7 @@ const questions = [
     },
     {
         question: 'What color is the Irish flag?',
-        options: ['White & Orange', 'White & Green', 'Green, White & Orange', 'White & Red'],
+        options: ['White, Orange & Red', 'White, Green & Blue', 'Green, White & Orange', 'Orange, White & Green'],
         correctAnswer: 'Green, White & Orange'
     },
     {

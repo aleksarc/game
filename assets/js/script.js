@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     finalResult.textContent = result;
                     unhideElement('final-result');
                     unhideElement('new-game');
+                    hideElement('quit');
                 }
             } else if (this.getAttribute('data-type') === 'new-game') {
                 currentQuestionIndex = 0;
@@ -75,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('correct').textContent = 0;
                 document.getElementById('incorrect').textContent = 0;
                 displayQuestion(currentQuestionIndex);
+                unhideElement('quit');
+            } else if (this.getAttribute('data-type') === 'quit') {
+                location.href = "http://[::]:8000/";
             } else {
                 alert('Something went wrong!');
             }

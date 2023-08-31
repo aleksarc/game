@@ -23,6 +23,8 @@ html {
     background-color: #F4E8D0;
     border-radius: 5px;
     margin-top: 10px;
+    box-shadow: 10px 10px 8px #888888;
+    border: groove;
 }
 
 .header {
@@ -62,10 +64,15 @@ html {
     font-size: large;
 }
 
-/* button for new game */
-.new-game {
+/* controls within game */
+#new-game {
     float: right;
 }
+
+#quit {
+    float: right;
+}
+
 
 /* section with questions and answer options */
 .game {

@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 displayQuestion(currentQuestionIndex);
                 unhideElement('quit');
             } else if (this.getAttribute('data-type') === 'quit') {
-                location.href = "http://[::]:8000/";
+                location.href = "https://aleksarc.github.io/game/";
             } else {
                 alert('Something went wrong!');
             }

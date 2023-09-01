@@ -11,7 +11,7 @@ textarea {
 }
 
 html {
-    background-image: url('./assets/images/back-image2.png');
+    background-image: url('../images/back-image2.png');
     background-size: auto;
 }
 

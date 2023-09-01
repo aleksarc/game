@@ -148,9 +148,15 @@ The style.css file was validated by [W3C CSS Validation Service](https://jigsaw.
 
 ### Google Lighthouse test
 
-Upon deployment to GitHub pages, the webpage was teseted with the Google Lighthouse tool available in the Dev tools kit of Google Chrome. The results are satisfactory.
+Upon deployment to GitHub pages, the webpage was teseted with the Google Lighthouse tool available in the Dev tools kit of Google Chrome. All the marks achieved 100.
 
-??????????????????????????????????????[lighthouse screenshot](????????)
+![lighthouse screenshot](./assets/images/readme/lighthouse.png)
+
+### Responsiveness
+
+The game was built considering responsiveness so players can enjoy from their phones, computes, laptops or tablets. The responsiveness feature is build with CSS @media query functionality and additionally to the tests performed with Chrome DevTools simulating different sizes of screens, the webpage was subject to this online test https://ui.dev/amiresponsive, with the screenshot showing results below.
+
+![test responsiveness screenshot](./assets/images/readme/responsiveness.png)
 
 ## Deployment
 The webpage was deployed to GitHub Pages by following these steps:

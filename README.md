@@ -159,6 +159,7 @@ The game was built considering responsiveness so players can enjoy from their ph
 ![test responsiveness screenshot](./assets/images/readme/responsiveness.png)
 
 ## Deployment
+
 The webpage was deployed to GitHub Pages by following these steps:
 * Go the the repository in GitHub
 * Click on the Settings link on the top menu
@@ -172,6 +173,16 @@ The webpage was deployed to GitHub Pages by following these steps:
 
 [Click here](https://aleksarc.github.io/game/) to access this webpage.
 
+## Opportunities for improvement
+
+Though the game was designed with the intent of quick start, no hassle, there's obsviously room for improvement and some of the potential features for future implementation are:
+- Separate questions by category and allow the player to choose which category they want to play
+- Implement a "number o questions" configuration where the player can choose how many questions they want to answer
+- Show tips to the player to help choosing the correct answer
+- Implement a timer to increase game difficulty and give the player the option to choose the level of difficulty (this can be associated with number of questions/categories for each level of difficulty)
+- Integrate the app with a backend system that will store username and scores indefinitely or with established TTL
+- Implement a live playing system that allows more users to play together at once and compete comparing their scoreboards
+- Implement a dashboard to show highest scores and the subsequent positions (1 - 10 for example)
 
 ## References
 - This app was built with asistance of Code Institute professors and mentor as deliverable for "Project 2" of the course "Diploma in Full Stack Software Development (E-commerce Applications)". I extend here my gratitude for such support and material provided.
